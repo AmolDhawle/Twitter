@@ -11,11 +11,4 @@ app.listen(PORT, async () => {
     console.log(`Server started at PORT ${PORT}`);
     await connect();
     console.log("MongoDB connected");
-    // const tweet = await Tweet.create({
-    //     content: "Hi this is my first tweet",
-    //     userEmail: "admin@gmail.com"
-    // });
-    const tweetRepo = new TweetRepository();
-    const tweet = await tweetRepo.create({content: "tweet with hooks"});
-    console.log(tweet);
 }) 
