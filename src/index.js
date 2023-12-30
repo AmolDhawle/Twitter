@@ -16,6 +16,6 @@ app.listen(PORT, async () => {
     //     userEmail: "admin@gmail.com"
     // });
     const tweetRepo = new TweetRepository();
-    const tweet = await tweetRepo.getWithComments("6590004e9f5538e208878ec9");
+    const tweet = await tweetRepo.create({content: "tweet with hooks"});
     console.log(tweet);
 }) 
