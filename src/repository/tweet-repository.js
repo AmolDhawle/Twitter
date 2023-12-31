@@ -1,4 +1,4 @@
-const Tweet = require("../models/Tweet");
+const Tweet = require("../models/tweet");
 
 class TweetRepository {
 
@@ -32,15 +32,6 @@ class TweetRepository {
     async getAll(offset, limit) {
         try {
             const tweet = await Tweet.find().skip(offset).limit(limit);
-            return tweet;
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    async update(tweetId, data){
-        try {
-            const tweet = await Tweet.findByIdAndUpdate(tweetId, data, {new: true});
             return tweet;
         } catch (error) {
             console.log(error);
