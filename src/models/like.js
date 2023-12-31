@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const likeSchema = mongoose.Schema({
+const likeSchema = new mongoose.Schema({
     onModel: {
         type: String,
         required: true,
@@ -13,7 +13,7 @@ const likeSchema = mongoose.Schema({
     },
 
     user: {
-        type: mongoose.Schema.Types.ObjectId;
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     }
