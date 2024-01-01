@@ -3,30 +3,38 @@ const { TweetRepository, LikeRepository } = require("../repository/index");
 class LikeService {
     constructor() {
         this.likeRepository = new LikeRepository();
-        this.tweetRepository = new TweetRepository
+        this.tweetRepository = new TweetRepository();
     }
 
     async toggleLike(modelId, modelType, userId) {
-        if(modelType == 'Tweet') {
-            var likeable = await this.tweetRepository.get(modelId).populate('likes');
-        } else if(modelType == 'Comment') {
-
+        console.log(modelId)
+        if (modelType === 'Tweet') {
+            var likeable = await this.tweetRepository.find(modelId);
+            console.log(likeable);
+        } else if (modelType === 'Comment') {
+            throw new Error("Not implemented");
         } else {
             throw new Error("Unknown model type");
         }
-
-        const exists =  await this.likeRepository.create({
+    
+        if (!likeable) {
+            console.error(`No ${modelType} found with id ${modelId}`);
+            return false;
+        }
+    
+        const exists = await this.likeRepository.findByUserAndLikeable({
             user: userId,
             onModel: modelType,
             likeable: modelId
         });
-        if(exists) {
-            likeable.this.pull(exists.id);
+    
+        if (exists) {
+            likeable.likes.pull(exists  .id);
             await likeable.save();
-            await likeable.remove();
-            var isAdded = false;
-        }
-        else {
+            await exists.deleteOne();
+            console.log("Like removed");
+            return false; 
+        } else {
             const newLike = await this.likeRepository.create({
                 user: userId,
                 onModel: modelType,
@@ -34,10 +42,10 @@ class LikeService {
             });
             likeable.likes.push(newLike);
             await likeable.save();
-            var isAdded = true;
+            console.log("Like added");  
+            return true; // Like added
         }
-        return true;
     }
-}
+}    
 
-export default LikeService;
+module.exports = LikeService;

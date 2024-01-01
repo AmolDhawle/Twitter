@@ -18,7 +18,7 @@ class CrudRepository {
             const result = await this.model.findByIdAndDelete(id);
             return true;
         } catch (error) {
-            console.log("Something went wrong in the repository layer");
+            console.log("Something went wrong in the crud repo");
             throw error;
         }
     }
@@ -28,7 +28,7 @@ class CrudRepository {
             const result = await this.model.findById(id);
             return result;
         } catch (error) {
-            console.log("Something went wrong in the repository layer");
+            console.log("Something went wrong in the crud repo");
             throw error;
         }
     }
@@ -38,7 +38,7 @@ class CrudRepository {
             const result = await this.model.find({});
             return result;
         } catch (error) {
-            console.log("Something went wrong in the repository layer");
+            console.log("Something went wrong in the crud repo");
             throw error;
         }
     }
@@ -46,9 +46,9 @@ class CrudRepository {
     async update (id, data) {
         try {
             const result = await this.model.findByIdAndUpdate(id, data, {new: true});
-            return result;
+            return result; 
         } catch (error) {
-            console.log("Something went wrong in the repository layer");
+            console.log("Something went wrong in the crud repo");
             throw error;
         }
     }
