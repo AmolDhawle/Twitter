@@ -7,10 +7,8 @@ class LikeService {
     }
 
     async toggleLike(modelId, modelType, userId) {
-        console.log(modelId)
         if (modelType === 'Tweet') {
             var likeable = await this.tweetRepository.find(modelId);
-            console.log(likeable);
         } else if (modelType === 'Comment') {
             throw new Error("Not implemented");
         } else {
