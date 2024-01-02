@@ -16,7 +16,6 @@ const signup = async (req, res) => {
             err: {}
         })
     } catch (error) {
-        console.log(error);
         return res.status(500).json({
             success: true,
             message: "Something went wrong",
@@ -26,4 +25,23 @@ const signup = async (req, res) => {
     }
 }
 
-module.exports = { signup }
+const login = async (req,res) => {
+    try {
+        const token = await userService.signin(req.body);
+        return res.status(200).json({
+            success: true,
+            message: "Successfully logged in",
+            data: token,
+            err: {}
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: true,
+            message: "Something went wrong",
+            data: {},
+            err: error
+        })
+    }
+}
+
+module.exports = { signup, login }
