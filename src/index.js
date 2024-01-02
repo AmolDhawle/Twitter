@@ -21,24 +21,6 @@ app.listen(PORT, async () => {
 
         const userRepo = new UserRepository();
         const tweetRepo = new TweetRepository();
-        // const tweets = await tweetRepo.getAll(0, 10);
-        // const user = await userRepo.create({
-        //     email: 'Achal@gmail.com',
-        //     password: 'ACHAL0407',
-        //     name: 'Achal'
-        // });
         const users = await userRepo.getAll();
 
-        // if (tweets.length === 0) {
-        //     console.error("No tweets found in the database.");
-        //     return;
-        // }
-
-        // if (users.length === 0) {
-        //     console.error("No users found in the database.");
-        //     return;
-        // }
-
-        // const likeService = new LikeService();
-        // await likeService.toggleLike(tweets[0].id, 'Tweet', users[0].id);
 });
