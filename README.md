@@ -3,12 +3,12 @@ Welcome to the Twitter Backend Project! This project provides the backend functi
 
 ## Endpoints
 
-1. Create Tweet: POST /tweets - Create a new tweet.
-2. Get Tweet: GET /tweets/:id - Get details of a tweet by ID.
-3. Create Comment: POST /comments - Create a new comment on a tweet.
-4. Toggle Like: POST /likes/toggle - Toggle like on a tweet.
-5. User Signup: POST /signup - Register a new user.
-6. User Login: POST /login - Authenticate and log in a user.
+1. Create Tweet: POST /api/v1/tweets - Create a new tweet.
+2. Get Tweet: GET /api/v1/tweets/:id - Get details of a tweet by ID.
+3. Create Comment: POST /api/v1/comments - Create a new comment on a tweet.
+4. Toggle Like: POST /api/v1/likes/toggle - Toggle like on a tweet.
+5. User Signup: POST /api/v1/signup - Register a new user.
+6. User Login: POST /api/v1/login - Authenticate and log in a user.
 
 ## Controllers
 1. tweet-controller: Handles tweet-related operations such as creating and getting tweets.
